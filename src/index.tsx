@@ -1,12 +1,8 @@
 // Vendors
-import React from "react";
-import { render } from "react-dom";
+import React from 'react';
+import { render } from 'react-dom';
 
 // Locals
-import { App } from "./app";
+import { App } from './app';
 
-render(
-  <App />,
-  document.getElementById("output")
-);
-
+render(<App />, document.getElementById('output'));
