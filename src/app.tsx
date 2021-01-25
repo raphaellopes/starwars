@@ -1,4 +1,13 @@
 // Vendors
 import React, { FC } from 'react';
 
-export const App: FC = () => <h1>Setup project for study proporse</h1>;
+// Locals
+import { GlobalStyle } from './styles';
+import { Main } from './pages';
+
+export const App: FC = () => (
+  <>
+    <GlobalStyle />
+    <Main />
+  </>
+);
