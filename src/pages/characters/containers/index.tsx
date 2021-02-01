@@ -2,29 +2,24 @@
 import React, { FC } from 'react';
 
 // Locals
-import { Container, Title, Card, Avatar } from '~components';
+import { Container, Title, Avatar } from '~components';
 import { CharactersContainerProps, CharacterProps } from './types';
+import { Cards, Card, CardName } from './styles';
 
 export const CharactersContainer: FC<CharactersContainerProps> = ({
   characters,
 }) => {
-  const renderCards = (
-    { name, description, image }: CharacterProps,
-    index: number
-  ) => (
-    <div key={`character-item-${index}`}>
+  const renderCards = ({ name, image }: CharacterProps, index: number) => (
+    <Card key={`character-item-${index}`}>
       <Avatar src={image} />
-      <p>
-        <b>{name}</b>
-      </p>
-      <p>{description}</p>
-    </div>
+      <CardName>{name}</CardName>
+    </Card>
   );
 
   return (
     <Container>
       <Title>Characters Container</Title>
-      <div>{characters.map(renderCards)}</div>
+      <Cards>{characters.map(renderCards)}</Cards>
     </Container>
   );
 };
