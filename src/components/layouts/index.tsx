@@ -1,4 +1,7 @@
 // Vendors
 import styled, { css } from 'styled-components';
 
-export const Wrapper = styled.div``;
+export const Container = styled.div`
+  max-width: 960px;
+  margin: auto;
+`;
