@@ -1,9 +1,9 @@
 // Vendors
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 import theme from 'styled-theming';
 
 // Locals
-import { colors } from '~styles';
+import { colors, styled } from '~styles';
 
 const cardsStyle = theme('mode', {
   light: css`

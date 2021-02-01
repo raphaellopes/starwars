@@ -2,7 +2,7 @@
 import React, { FC } from 'react';
 
 // Locals
-import { Container, Title, Card } from '~components';
+import { Container, Title, Card, Avatar } from '~components';
 import { CharactersContainerProps, CharacterProps } from './types';
 
 export const CharactersContainer: FC<CharactersContainerProps> = ({
@@ -13,7 +13,7 @@ export const CharactersContainer: FC<CharactersContainerProps> = ({
     index: number
   ) => (
     <div key={`character-item-${index}`}>
-      <img src={image} />
+      <Avatar src={image} />
       <p>
         <b>{name}</b>
       </p>

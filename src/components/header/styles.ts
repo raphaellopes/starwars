@@ -1,5 +1,5 @@
-// Vendors
-import styled from 'styled-components';
+// Locals
+import { styled } from '~styles';
 
 export const Container = styled.header`
   display: flex;

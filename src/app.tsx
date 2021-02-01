@@ -1,13 +1,12 @@
 // Vendors
 import React, { FC } from 'react';
-import { ThemeProvider } from 'styled-components';
 
 // Locals
-import { GlobalStyle } from './styles';
+import { GlobalStyle, theme, ThemeProvider } from './styles';
 import { Main } from './pages';
 
 export const App: FC = () => (
-  <ThemeProvider theme={{ mode: 'light' }}>
+  <ThemeProvider theme={{ mode: 'light', ...theme }}>
     <GlobalStyle />
     <Main />
   </ThemeProvider>
