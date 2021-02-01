@@ -1,12 +1,18 @@
 // Vendors
 import React, { FC } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // Locals
-import { Header, Title } from '~components';
+import { Header } from '~components';
+import Characters from '../characters';
 
 export const Main: FC = () => (
   <>
-    <Header>Teste do rasta</Header>
-    <Title>My main page</Title>
+    <Header />
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Characters} />
+      </Switch>
+    </Router>
   </>
 );
