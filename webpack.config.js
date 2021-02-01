@@ -1,34 +1,39 @@
 // Vendors
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const srcPath = path.resolve(__dirname, 'src');
 
 module.exports = {
-  entry: "./src/index.tsx",
-  target: "web",
-  mode: "development",
+  entry: './src/index.tsx',
+  target: 'web',
+  mode: 'development',
   output: {
-    path: path.resolve(__dirname, "build"),
-    filename: "bundle.js",
+    path: path.resolve(__dirname, 'build'),
+    filename: 'bundle.js',
   },
   resolve: {
-    extensions: [".js", ".jsx", ".json", ".ts", ".tsx"],
+    alias: {
+      '~components': path.resolve(srcPath, 'components'),
+    },
+    extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
   },
   module: {
     rules: [
       {
         test: /\.(ts|tsx)$/,
-        loader: "awesome-typescript-loader",
+        loader: 'awesome-typescript-loader',
       },
       {
-        enforce: "pre",
+        enforce: 'pre',
         test: /\.js$/,
-        loader: "source-map-loader",
+        loader: 'source-map-loader',
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "src", "public", "index.html"),
+      template: path.resolve(srcPath, 'public', 'index.html'),
     }),
   ],
 };
