@@ -11,7 +11,8 @@
     "esModuleInterop": true,
     "baseUrl": "./src",
     "paths": {
-      "~components": ["components"]
+      "~components": ["components"],
+      "~styles": ["styles"]
     }
   },
   "include": ["src/index.tsx"]

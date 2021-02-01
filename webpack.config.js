@@ -15,6 +15,7 @@ module.exports = {
   resolve: {
     alias: {
       '~components': path.resolve(srcPath, 'components'),
+      '~styles': path.resolve(srcPath, 'styles'),
     },
     extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
   },
