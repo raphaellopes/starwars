@@ -1,6 +1,3 @@
-// Vendors
-import { css } from 'styled-components';
-
 // Locals
 import { styled } from '~styles';
 
