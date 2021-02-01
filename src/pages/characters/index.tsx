@@ -2,12 +2,18 @@
 import React, { FC } from 'react';
 
 // Locals
-import { Container, Title } from '~components';
+import { CharactersContainer } from './containers';
 
-const Characters: FC = () => (
-  <Container>
-    <Title>Characters Page</Title>
-  </Container>
-);
+import mock from './mock';
+
+const Characters: FC = () => {
+  const data = mock.map(({ name, description, image }) => ({
+    name,
+    description,
+    image,
+  }));
+
+  return <CharactersContainer characters={data} />;
+};
 
 export default Characters;
