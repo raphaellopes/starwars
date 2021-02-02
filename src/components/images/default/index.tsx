@@ -8,7 +8,6 @@ import { ImageProps } from '../types';
 const Component: FC<ImageProps> = ({ src, ...rest }) => {
   const { src: source, error } = useImage({ srcList: src });
 
-  // @ts-ignore
   const renderImage = () => !error && <img src={source} {...rest} />;
 
   const renderError = () => error && <span>{error}</span>;
