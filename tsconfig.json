@@ -12,7 +12,8 @@
     "baseUrl": "./src",
     "paths": {
       "~components": ["components"],
-      "~styles": ["styles"]
+      "~styles": ["styles"],
+      "~services/*": ["services/*"]
     }
   },
   "include": ["src/index.tsx"]
