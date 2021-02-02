@@ -17,6 +17,7 @@ module.exports = {
       '~components': path.resolve(srcPath, 'components'),
       '~styles': path.resolve(srcPath, 'styles'),
       '~services': path.resolve(srcPath, 'services'),
+      '~store': path.resolve(srcPath, 'store'),
     },
     extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
   },

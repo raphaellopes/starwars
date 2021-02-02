@@ -7,13 +7,13 @@ import { CharactersContainer } from './containers';
 import mock from './mock';
 
 const Characters: FC = () => {
-  const data = mock.map(({ name, description, image }) => ({
+  const mockData = mock.map(({ name, description, image }) => ({
     name,
     description,
     image,
   }));
 
-  return <CharactersContainer characters={data} />;
+  return <CharactersContainer characters={mockData} />;
 };
 
 export default Characters;

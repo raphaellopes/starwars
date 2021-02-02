@@ -13,7 +13,8 @@
     "paths": {
       "~components": ["components"],
       "~styles": ["styles"],
-      "~services/*": ["services/*"]
+      "~services/*": ["services/*"],
+      "~store/*": ["store/*"]
     }
   },
   "include": ["src/index.tsx"]
