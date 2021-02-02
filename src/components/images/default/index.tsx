@@ -21,9 +21,8 @@ const Component: FC<ImageProps> = ({ src, ...rest }) => {
   );
 };
 
-// @TODO: Check the warning of react suspense use
 export const Image: FC<ImageProps> = (props) => (
-  <Suspense fallback={() => <span>loading</span>}>
+  <Suspense fallback={<span>loading</span>}>
     <Component {...props} />
   </Suspense>
 );
