@@ -1,19 +1,18 @@
 // Vendors
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 
 // Locals
+import { useCharacterHook } from '~store/ducks/characters';
 import { CharactersContainer } from './containers';
 
-import mock from './mock';
-
 const Characters: FC = () => {
-  const mockData = mock.map(({ name, description, image }) => ({
-    name,
-    description,
-    image,
-  }));
+  const { dispatchers, data, loading } = useCharacterHook();
 
-  return <CharactersContainer characters={mockData} />;
+  useEffect(() => {
+    dispatchers.request();
+  }, []);
+
+  return <CharactersContainer loading={loading} characters={data} />;
 };
 
 export default Characters;

@@ -9,15 +9,18 @@ import * as actions from './actions';
 export const useCharacterHook = () => {
   const dispatch = useDispatch();
   const state = (state: StateType) => state.characters;
-  const { status, data } = useSelector(state);
+  const { status, data, loading } = useSelector(state);
 
   // dispatchers
   const setStatus = (value: CharactersStatusType) =>
     dispatch(actions.charactersStatus(value));
 
+  const request = () => dispatch(actions.charactersFetch());
+
   return {
     status,
+    loading,
     data,
-    dispatchers: { setStatus },
+    dispatchers: { setStatus, request },
   };
 };

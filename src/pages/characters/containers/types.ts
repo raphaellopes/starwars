@@ -1,9 +1,7 @@
-export interface CharacterProps {
-  name: string;
-  description: string;
-  image: string;
-}
+// Locals
+import { CharacterType } from '~store/ducks/characters/types';
 
 export interface CharactersContainerProps {
-  characters: CharacterProps[];
+  loading: boolean;
+  characters: CharacterType[];
 }

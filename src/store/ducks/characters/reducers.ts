@@ -11,12 +11,21 @@ export const charactersReducer = (
   state = initialState,
   action: CharactersActionTypes
 ): CharactersStateType => {
-  const { payload } = action;
   switch (action.type) {
     case Types.CHAR_STATUS:
+      // @ts-ignore
+      const payload = action?.payload;
       const { status } = state;
-      const result = status === payload ? state : { ...state, status: payload };
+      const result =
+        status === payload
+          ? state
+          : { ...state, status: payload, loading: payload === 'fetching' };
+      // @ts-ignore
       return result;
+    case Types.CHAR_DATA:
+      // @ts-ignore
+      const payload = action?.payload;
+      return { ...state, loading: false, data: [...state.data, ...payload] };
     default:
       return state;
   }
