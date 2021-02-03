@@ -4,9 +4,10 @@ import createSagaMiddleware from 'redux-saga';
 
 // Locals
 import '~config/reactotron';
+import env from '~config/env';
 import reducers, { RootStateType, rootSagas } from './ducks';
 
-const isDevelopment = process.env.NODE_ENV === 'development';
+const { isDevelopment } = env;
 
 // @ts-ignore - The console does dot recognizes the tron property
 const sagaMonitor = isDevelopment ? console.tron.createSagaMonitor() : null;
