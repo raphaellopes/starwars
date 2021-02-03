@@ -30,9 +30,17 @@ export const charactersReducer = (
       // @ts-ignore
       const payload = action?.payload;
       // @ts-ignore
-      const data = payload.data;
-      console.log('>>>', { payload });
-      return { ...state, loading: false, data: { ...state.data, ...data } };
+      const { data, page } = payload;
+      const pagination = { [page]: { ids: Object.keys(data), fetched: true } };
+      return {
+        ...state,
+        loading: false,
+        data: { ...state.data, ...data },
+        pagination: {
+          pages: { ...state.pagination.pages, ...pagination },
+          currentPage: page,
+        },
+      };
     default:
       return state;
   }

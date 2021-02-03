@@ -25,7 +25,7 @@ export interface CharactersStateType {
   data: CharactersDataType;
   pagination: {
     pages: {
-      [key: string]: {
+      [key: number]: {
         ids: string[];
         fetched: boolean;
       };
