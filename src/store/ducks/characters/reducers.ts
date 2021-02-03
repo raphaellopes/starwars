@@ -4,7 +4,7 @@ import { CharactersStateType, CharactersActionTypes, Types } from './types';
 export const initialState: CharactersStateType = {
   status: 'initial',
   loading: false,
-  data: [],
+  data: {},
 };
 
 export const charactersReducer = (
@@ -25,7 +25,7 @@ export const charactersReducer = (
     case Types.CHAR_DATA:
       // @ts-ignore
       const payload = action?.payload;
-      return { ...state, loading: false, data: [...state.data, ...payload] };
+      return { ...state, loading: false, data: { ...state.data, ...payload } };
     default:
       return state;
   }

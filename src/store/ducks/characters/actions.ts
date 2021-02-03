@@ -3,7 +3,7 @@ import {
   Types,
   CharactersActionTypes,
   CharactersStatusType,
-  CharacterType,
+  CharactersDataType,
 } from './types';
 
 export const charactersStatus = (
@@ -18,7 +18,7 @@ export const charactersFetch = (): CharactersActionTypes => ({
 });
 
 export const charactersData = (
-  payload: CharacterType[]
+  payload: CharactersDataType
 ): CharactersActionTypes => ({
   type: Types.CHAR_DATA,
   payload,

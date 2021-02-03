@@ -10,14 +10,19 @@ export const Types = {
 export type CharactersStatusType = 'initial' | 'fetching' | 'fetched';
 
 export interface CharacterType {
+  id: string;
   name: string;
   height: string;
+}
+
+export interface CharactersDataType {
+  [key: string]: CharacterType;
 }
 
 export interface CharactersStateType {
   status: CharactersStatusType;
   loading: boolean;
-  data: CharacterType[];
+  data: CharactersDataType;
 }
 
 // actions
@@ -32,7 +37,7 @@ export interface CharactersFetchAction {
 
 export interface CharactersDataAction {
   type: typeof Types.CHAR_DATA;
-  payload: CharacterType[];
+  payload: CharactersDataType;
 }
 
 export type CharactersActionTypes =

@@ -3,20 +3,24 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 // Locals
 import api from '~services/api';
-import { Types, CharacterType } from './types';
+import { Types, CharacterType, CharactersDataType } from './types';
 import * as actions from './actions';
 
 export function* charactersFetch() {
   try {
     yield put(actions.charactersStatus('fetching'));
     const { data } = yield call(api.get, 'people');
+    const formattedData: CharactersDataType = {};
 
     const result: CharacterType[] = data.results.map((item: any) => ({
+      id: item.url.match(/(\d+)/)[0],
       name: item.name,
       height: item.height,
     }));
 
-    yield put(actions.charactersData(result));
+    result.map((item: CharacterType) => (formattedData[item.id] = item));
+
+    yield put(actions.charactersData(formattedData));
     yield put(actions.charactersStatus('fetched'));
   } catch (error) {
     console.error('>>> charactersFetch', { error });

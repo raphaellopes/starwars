@@ -6,6 +6,7 @@ import { RootStateType as StateType } from '..';
 import { CharactersStatusType } from './types';
 import * as actions from './actions';
 
+export * from './types';
 export const useCharacterHook = () => {
   const dispatch = useDispatch();
   const state = (state: StateType) => state.characters;
