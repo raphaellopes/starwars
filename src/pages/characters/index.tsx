@@ -3,7 +3,6 @@ import React, { FC, useEffect, useState } from 'react';
 
 // Locals
 import { useCharacterHook, CharacterType } from '~store/ducks/characters';
-import { Button } from '~components';
 import { CharactersContainer } from './containers';
 
 const Characters: FC = () => {
@@ -28,15 +27,14 @@ const Characters: FC = () => {
   };
 
   return (
-    <>
-      <CharactersContainer loading={loading} characters={characters} />
-      <Button onClick={handleClickPrev} disabled={disablePrev}>
-        prev
-      </Button>
-      <Button onClick={handleClickNext} disabled={disableNext}>
-        next
-      </Button>
-    </>
+    <CharactersContainer
+      loading={loading}
+      characters={characters}
+      disablePrev={disablePrev}
+      disableNext={disableNext}
+      onClickPrev={handleClickPrev}
+      onClickNext={handleClickNext}
+    />
   );
 };
 
