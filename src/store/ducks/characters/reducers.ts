@@ -5,6 +5,10 @@ export const initialState: CharactersStateType = {
   status: 'initial',
   loading: false,
   data: {},
+  pagination: {
+    pages: {},
+    currentPage: 1,
+  },
 };
 
 export const charactersReducer = (
@@ -25,7 +29,10 @@ export const charactersReducer = (
     case Types.CHAR_DATA:
       // @ts-ignore
       const payload = action?.payload;
-      return { ...state, loading: false, data: { ...state.data, ...payload } };
+      // @ts-ignore
+      const data = payload.data;
+      console.log('>>>', { payload });
+      return { ...state, loading: false, data: { ...state.data, ...data } };
     default:
       return state;
   }

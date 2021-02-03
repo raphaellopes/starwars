@@ -3,6 +3,7 @@ import React, { FC, useEffect } from 'react';
 
 // Locals
 import { useCharacterHook, CharacterType } from '~store/ducks/characters';
+import { Button } from '~components';
 import { CharactersContainer } from './containers';
 
 const Characters: FC = () => {
@@ -15,7 +16,14 @@ const Characters: FC = () => {
     dispatchers.request();
   }, []);
 
-  return <CharactersContainer loading={loading} characters={characters} />;
+  const handleClickNext = () => dispatchers.request(2);
+
+  return (
+    <>
+      <CharactersContainer loading={loading} characters={characters} />
+      <Button onClick={handleClickNext}>next</Button>
+    </>
+  );
 };
 
 export default Characters;

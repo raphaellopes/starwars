@@ -13,13 +13,15 @@ export const charactersStatus = (
   payload,
 });
 
-export const charactersFetch = (): CharactersActionTypes => ({
+export const charactersFetch = (page?: number): CharactersActionTypes => ({
   type: Types.CHAR_FETCH,
+  payload: { page: page ? page : 1 },
 });
 
-export const charactersData = (
-  payload: CharactersDataType
-): CharactersActionTypes => ({
+export const charactersData = (payload: {
+  page: number;
+  data: CharactersDataType;
+}): CharactersActionTypes => ({
   type: Types.CHAR_DATA,
   payload,
 });

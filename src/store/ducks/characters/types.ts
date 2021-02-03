@@ -23,6 +23,15 @@ export interface CharactersStateType {
   status: CharactersStatusType;
   loading: boolean;
   data: CharactersDataType;
+  pagination: {
+    pages: {
+      [key: string]: {
+        ids: string[];
+        fetched: boolean;
+      };
+    };
+    currentPage: number;
+  };
 }
 
 // actions
@@ -33,11 +42,12 @@ export interface CharactersStatusAction {
 
 export interface CharactersFetchAction {
   type: typeof Types.CHAR_FETCH;
+  payload?: { page: number };
 }
 
 export interface CharactersDataAction {
   type: typeof Types.CHAR_DATA;
-  payload: CharactersDataType;
+  payload: { page: number; data: CharactersDataType };
 }
 
 export type CharactersActionTypes =

@@ -16,7 +16,7 @@ export const useCharacterHook = () => {
   const setStatus = (value: CharactersStatusType) =>
     dispatch(actions.charactersStatus(value));
 
-  const request = () => dispatch(actions.charactersFetch());
+  const request = (page?: number) => dispatch(actions.charactersFetch(page));
 
   return {
     status,
