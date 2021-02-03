@@ -12,20 +12,26 @@ enum BorderRadiusSizes {
   small = '2px',
   medium = '4px',
   large = '6px;',
+  huge = '100px',
 }
 export const borderRadius = {
   rounded: BorderRadiusSizes.rounded,
   small: BorderRadiusSizes.small,
   medium: BorderRadiusSizes.medium,
   large: BorderRadiusSizes.large,
+  huge: BorderRadiusSizes.huge,
 };
 
 // paddings
 enum PaddingSizes {
   medium = '10px',
+  large = '15px',
+  xLarge = '20px',
 }
 export const paddings = {
   medium: PaddingSizes.medium,
+  large: PaddingSizes.large,
+  xLarge: PaddingSizes.xLarge,
 };
 
 // margins
