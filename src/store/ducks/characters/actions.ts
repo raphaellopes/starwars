@@ -7,10 +7,10 @@ import {
 } from './types';
 
 export const charactersStatus = (
-  payload: CharactersStatusType
+  status: CharactersStatusType
 ): CharactersActionTypes => ({
   type: Types.CHAR_STATUS,
-  payload,
+  payload: { status },
 });
 
 export const charactersFetch = (page?: number): CharactersActionTypes => ({
@@ -25,4 +25,9 @@ export const charactersData = (payload: {
 }): CharactersActionTypes => ({
   type: Types.CHAR_DATA,
   payload,
+});
+
+export const charactersPage = (page: number): CharactersActionTypes => ({
+  type: Types.CHAR_PAGE,
+  payload: { page },
 });

@@ -25,12 +25,15 @@ export const useCharacterHook = () => {
 
   const request = (page?: number) => dispatch(actions.charactersFetch(page));
 
+  const setCurrentPage = (page: number) =>
+    dispatch(actions.charactersPage(page));
+
   return {
     status,
     loading,
     data,
     dataByPage,
     pagination,
-    dispatchers: { setStatus, request },
+    dispatchers: { setStatus, request, setCurrentPage },
   };
 };

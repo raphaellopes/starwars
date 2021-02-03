@@ -10,7 +10,7 @@ export function* charactersFetch({ payload }: any) {
   try {
     const { page } = payload;
     yield put(actions.charactersStatus('fetching'));
-    const { data } = yield call(api.get, `people?page=${page}`);
+    const { data } = yield call(api.get, `people/?page=${page}`);
     const formattedData: CharactersDataType = {};
     const perPage = 10;
 

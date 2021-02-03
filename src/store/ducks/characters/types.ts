@@ -4,6 +4,7 @@ export const Types = {
   CHAR_STATUS: `${prefix}/status`,
   CHAR_FETCH: `${prefix}/fetch`,
   CHAR_DATA: `${prefix}/data`,
+  CHAR_PAGE: `${prefix}/page`,
 };
 
 // states
@@ -36,14 +37,19 @@ export interface CharactersStateType {
 }
 
 // actions
-export interface CharactersStatusAction {
-  type: typeof Types.CHAR_STATUS;
-  payload: CharactersStatusType;
-}
-
 export interface CharactersFetchAction {
   type: typeof Types.CHAR_FETCH;
   payload?: { page: number };
+}
+
+export interface CharactersStatusAction {
+  type: typeof Types.CHAR_STATUS;
+  payload: { status: CharactersStatusType };
+}
+
+export interface CharactersPageAction {
+  type: typeof Types.CHAR_PAGE;
+  payload: { page: number };
 }
 
 export interface CharactersDataAction {
@@ -54,4 +60,5 @@ export interface CharactersDataAction {
 export type CharactersActionTypes =
   | CharactersStatusAction
   | CharactersFetchAction
-  | CharactersDataAction;
+  | CharactersDataAction
+  | CharactersPageAction;

@@ -19,19 +19,20 @@ export const charactersReducer = (
   switch (action.type) {
     case Types.CHAR_STATUS:
       // @ts-ignore
-      const payload = action?.payload;
+      const payloadStatus = action.payload?.status;
       const { status } = state;
       const result =
-        status === payload
+        status === payloadStatus
           ? state
-          : { ...state, status: payload, loading: payload === 'fetching' };
-      // @ts-ignore
+          : {
+              ...state,
+              status: payloadStatus,
+              loading: payloadStatus === 'fetching',
+            };
       return result;
     case Types.CHAR_DATA:
       // @ts-ignore
-      const payload = action?.payload;
-      // @ts-ignore
-      const { data, page, totalPages } = payload;
+      const { data, page, totalPages } = action.payload;
       const pagination = { [page]: { ids: Object.keys(data), fetched: true } };
       return {
         ...state,
@@ -43,6 +44,15 @@ export const charactersReducer = (
           totalPages: state.pagination.totalPages
             ? state.pagination.totalPages
             : totalPages,
+        },
+      };
+    case Types.CHAR_PAGE:
+      return {
+        ...state,
+        pagination: {
+          ...state.pagination,
+          // @ts-ignore
+          currentPage: action.payload.page,
         },
       };
     default:

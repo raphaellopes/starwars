@@ -36,11 +36,14 @@ export const CharactersContainer: FC<CharactersContainerProps> = ({
     />
   );
 
+  // @TODO: Relpace by placeholder component
+  const renderLoading = () => loading && <p>loading...</p>;
+
   return (
     <Container>
       <Title>Characters Container</Title>
       {renderCards()}
-      {loading && <p>loading...</p>}
+      {renderLoading()}
       {renderPagination()}
     </Container>
   );
