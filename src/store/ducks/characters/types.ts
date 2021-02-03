@@ -30,6 +30,7 @@ export interface CharactersStateType {
         fetched: boolean;
       };
     };
+    totalPages?: number;
     currentPage: number;
   };
 }
@@ -47,7 +48,7 @@ export interface CharactersFetchAction {
 
 export interface CharactersDataAction {
   type: typeof Types.CHAR_DATA;
-  payload: { page: number; data: CharactersDataType };
+  payload: { page: number; totalPages?: number; data: CharactersDataType };
 }
 
 export type CharactersActionTypes =

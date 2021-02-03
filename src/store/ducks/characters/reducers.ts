@@ -8,6 +8,7 @@ export const initialState: CharactersStateType = {
   pagination: {
     pages: {},
     currentPage: 1,
+    totalPages: undefined,
   },
 };
 
@@ -30,7 +31,7 @@ export const charactersReducer = (
       // @ts-ignore
       const payload = action?.payload;
       // @ts-ignore
-      const { data, page } = payload;
+      const { data, page, totalPages } = payload;
       const pagination = { [page]: { ids: Object.keys(data), fetched: true } };
       return {
         ...state,
@@ -39,6 +40,9 @@ export const charactersReducer = (
         pagination: {
           pages: { ...state.pagination.pages, ...pagination },
           currentPage: page,
+          totalPages: state.pagination.totalPages
+            ? state.pagination.totalPages
+            : totalPages,
         },
       };
     default:

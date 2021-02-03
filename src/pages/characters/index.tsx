@@ -1,5 +1,5 @@
 // Vendors
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
 // Locals
 import { useCharacterHook, CharacterType } from '~store/ducks/characters';
@@ -7,21 +7,35 @@ import { Button } from '~components';
 import { CharactersContainer } from './containers';
 
 const Characters: FC = () => {
-  const { dispatchers, data, loading } = useCharacterHook();
-  const characters: CharacterType[] = Object.entries(data).map(
-    (item) => item[1]
-  );
+  const { dispatchers, loading, dataByPage, pagination } = useCharacterHook();
+  const [page, setPage] = useState<number>(pagination.currentPage);
+  const characters = dataByPage(page);
+  const disablePrev: boolean = page < 2;
+  const disableNext: boolean = page === pagination.totalPages;
 
   useEffect(() => {
-    dispatchers.request();
-  }, []);
+    !characters.length && dispatchers.request(page);
+  }, [page]);
 
-  const handleClickNext = () => dispatchers.request(2);
+  const handleClickNext = () => {
+    const next = page + 1;
+    setPage(next);
+  };
+
+  const handleClickPrev = () => {
+    const next = page - 1;
+    setPage(next);
+  };
 
   return (
     <>
       <CharactersContainer loading={loading} characters={characters} />
-      <Button onClick={handleClickNext}>next</Button>
+      <Button onClick={handleClickPrev} disabled={disablePrev}>
+        prev
+      </Button>
+      <Button onClick={handleClickNext} disabled={disableNext}>
+        next
+      </Button>
     </>
   );
 };

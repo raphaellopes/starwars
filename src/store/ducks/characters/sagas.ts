@@ -12,6 +12,7 @@ export function* charactersFetch({ payload }: any) {
     yield put(actions.charactersStatus('fetching'));
     const { data } = yield call(api.get, `people?page=${page}`);
     const formattedData: CharactersDataType = {};
+    const perPage = 10;
 
     const result: CharacterType[] = data.results.map((item: any) => ({
       id: item.url.match(/(\d+)/)[0],
@@ -21,7 +22,13 @@ export function* charactersFetch({ payload }: any) {
 
     result.map((item: CharacterType) => (formattedData[item.id] = item));
 
-    yield put(actions.charactersData({ data: formattedData, page }));
+    yield put(
+      actions.charactersData({
+        data: formattedData,
+        page,
+        totalPages: Math.ceil(data.count / perPage),
+      })
+    );
     yield put(actions.charactersStatus('fetched'));
   } catch (error) {
     console.error('>>> charactersFetch', { error });
