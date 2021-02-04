@@ -1,10 +1,9 @@
 // types
-const prefix = 'characters';
-export const Types = {
-  CHAR_STATUS: `${prefix}/status`,
-  CHAR_FETCH: `${prefix}/fetch`,
-  CHAR_DATA: `${prefix}/data`,
-};
+export enum Types {
+  CHAR_STATUS = 'characters/status',
+  CHAR_FETCH = 'characters/fetch',
+  CHAR_DATA = 'characters/data',
+}
 
 // states
 export type CharactersStatusType = 'initial' | 'fetching' | 'fetched';

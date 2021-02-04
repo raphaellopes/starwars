@@ -1,11 +1,5 @@
 // Locals
-import {
-  Types,
-  PaginationStateType,
-  PaginationDataAction,
-  PaginationSetPageAction,
-  PaginationActionTypes,
-} from './types';
+import { Types, PaginationStateType, PaginationActionTypes } from './types';
 
 export const initialState: PaginationStateType = {
   characters: {
@@ -15,41 +9,37 @@ export const initialState: PaginationStateType = {
 };
 
 export const paginationReducers = (
-  state = initialState,
+  state: PaginationStateType = initialState,
   action: PaginationActionTypes
 ): PaginationStateType => {
-  const { payload, meta } = action;
-
-  if (!action.meta) return state;
-
   switch (action.type) {
-    case Types.PAGINATION_DATA:
+    case Types.PAGINATION_DATA: {
+      const { payload, meta } = action;
       return {
         ...state,
         [meta.reducerKey]: {
           pages: {
             ...state[meta.reducerKey]?.pages,
-            // @ts-ignore
             [payload.page]: { ids: payload.ids },
           },
-          // @ts-ignore
           currentPage: payload.page,
           totalPages: state[meta.reducerKey]?.totalPages
             ? state[meta.reducerKey].totalPages
-            : // @ts-ignore
-              payload.totalPages,
+            : payload.totalPages,
         },
       };
+    }
 
-    case Types.PAGINATION_SET_PAGE:
+    case Types.PAGINATION_SET_PAGE: {
+      const { payload, meta } = action;
       return {
         ...state,
         [meta.reducerKey]: {
           ...state[meta.reducerKey],
-          // @ts-ignore
           currentPage: payload.currentPage,
         },
       };
+    }
     default:
       return state;
   }

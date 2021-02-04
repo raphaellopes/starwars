@@ -22,11 +22,12 @@ module.exports = {
     },
     extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
   },
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
         test: /\.(ts|tsx)$/,
-        loader: 'awesome-typescript-loader',
+        loader: 'ts-loader',
       },
       {
         enforce: 'pre',

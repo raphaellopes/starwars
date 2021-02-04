@@ -1,9 +1,8 @@
 // types
-const prefix = 'pagination';
-export const Types = {
-  PAGINATION_DATA: `${prefix}/data`,
-  PAGINATION_SET_PAGE: `${prefix}/set-page`,
-};
+export enum Types {
+  PAGINATION_DATA = 'pagination/data',
+  PAGINATION_SET_PAGE = 'pagination/set-page',
+}
 
 // types
 export type PaginationReducersType = 'characters';
