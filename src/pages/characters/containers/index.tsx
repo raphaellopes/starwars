@@ -27,14 +27,15 @@ export const CharactersContainer: FC<CharactersContainerProps> = ({
   const renderCards = () =>
     !loading && <Cards>{characters.map(renderCard)}</Cards>;
 
-  const renderPagination = () => (
-    <Pagination
-      disablePrev={disablePrev}
-      disableNext={disableNext}
-      onClickPrev={onClickPrev}
-      onClickNext={onClickNext}
-    />
-  );
+  const renderPagination = () =>
+    !loading && (
+      <Pagination
+        disablePrev={disablePrev}
+        disableNext={disableNext}
+        onClickPrev={onClickPrev}
+        onClickNext={onClickNext}
+      />
+    );
 
   // @TODO: Relpace by placeholder component
   const renderLoading = () => loading && <p>loading...</p>;

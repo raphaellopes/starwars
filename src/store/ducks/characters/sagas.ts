@@ -3,6 +3,7 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 // Locals
 import api from '~services/api';
+import * as paginationActions from '../pagination/actions';
 import { Types, CharacterType, CharactersDataType } from './types';
 import * as actions from './actions';
 
@@ -21,6 +22,18 @@ export function* charactersFetch({ payload }: any) {
     }));
 
     result.map((item: CharacterType) => (formattedData[item.id] = item));
+    const ids: string[] = result.map((item) => item.id);
+
+    yield put(
+      paginationActions.paginationData(
+        {
+          ids,
+          page,
+          totalPages: Math.ceil(data.count / perPage),
+        },
+        { reducerKey: 'characters' }
+      )
+    );
 
     yield put(
       actions.charactersData({

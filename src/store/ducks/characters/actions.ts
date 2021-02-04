@@ -26,8 +26,3 @@ export const charactersData = (payload: {
   type: Types.CHAR_DATA,
   payload,
 });
-
-export const charactersPage = (page: number): CharactersActionTypes => ({
-  type: Types.CHAR_PAGE,
-  payload: { page },
-});

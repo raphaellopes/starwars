@@ -4,8 +4,12 @@ import { all } from 'redux-saga/effects';
 
 // Locals
 import { charactersReducer, charactersSagasWatcher } from './characters';
+import { paginationReducers } from './pagination';
 
-const rootReducer = combineReducers({ characters: charactersReducer });
+const rootReducer = combineReducers({
+  characters: charactersReducer,
+  pagination: paginationReducers,
+});
 
 export default rootReducer;
 

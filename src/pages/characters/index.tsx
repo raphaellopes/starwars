@@ -3,14 +3,19 @@ import React, { FC, useEffect } from 'react';
 
 // Locals
 import { useCharacterHook, CharacterType } from '~store/ducks/characters';
+import { usePaginationHook } from '~store/ducks/pagination';
 import { CharactersContainer } from './containers';
 
 const Characters: FC = () => {
-  const { dispatchers, loading, dataByPage, pagination } = useCharacterHook();
-  const { currentPage: page } = pagination;
+  const { dispatchers, loading, dataByPage } = useCharacterHook();
+  const {
+    currentPage: page,
+    totalPages,
+    dispatchers: paginationDispatchers,
+  } = usePaginationHook('characters');
   const characters = dataByPage(page);
   const disablePrev = page < 2;
-  const disableNext = page === pagination.totalPages;
+  const disableNext = page === totalPages;
 
   useEffect(() => {
     !characters.length && dispatchers.request(page);
@@ -18,12 +23,12 @@ const Characters: FC = () => {
 
   const handleClickNext = () => {
     const next = page + 1;
-    dispatchers.setCurrentPage(next);
+    paginationDispatchers.setCurrentPage(next);
   };
 
   const handleClickPrev = () => {
     const next = page - 1;
-    dispatchers.setCurrentPage(next);
+    paginationDispatchers.setCurrentPage(next);
   };
 
   return (

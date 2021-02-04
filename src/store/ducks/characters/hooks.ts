@@ -3,14 +3,17 @@ import { useSelector, useDispatch } from 'react-redux';
 
 // Locals
 import { RootStateType as StateType } from '..';
+import { usePaginationHook } from '../pagination';
 import { CharactersStatusType, CharacterType } from './types';
 import * as actions from './actions';
 
 export * from './types';
 export const useCharacterHook = () => {
   const dispatch = useDispatch();
+
   const state = (state: StateType) => state.characters;
-  const { status, data, loading, pagination } = useSelector(state);
+  const { status, data, loading } = useSelector(state);
+  const pagination = usePaginationHook('characters');
 
   const dataByPage = (page: number): CharacterType[] => {
     const ids = pagination.pages[page]?.ids || [];
@@ -25,15 +28,11 @@ export const useCharacterHook = () => {
 
   const request = (page?: number) => dispatch(actions.charactersFetch(page));
 
-  const setCurrentPage = (page: number) =>
-    dispatch(actions.charactersPage(page));
-
   return {
     status,
     loading,
     data,
     dataByPage,
-    pagination,
-    dispatchers: { setStatus, request, setCurrentPage },
+    dispatchers: { setStatus, request },
   };
 };
