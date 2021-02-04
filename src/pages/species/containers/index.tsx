@@ -2,22 +2,50 @@
 import React, { FC } from 'react';
 
 // Locals
-import { Container, Title, Avatar } from '~components';
-import { SpeciesContainerProps, SpecieProps } from './types';
-import { Cards, Card, CardName } from './styles';
+import { SpecieType } from '~store/ducks/species/types';
+import { Container, Title } from '~components';
+import { SpeciesContainerProps } from './types';
+import { Cards, Card, CardName, Pagination } from './styles';
 
-export const SpeciesContainer: FC<SpeciesContainerProps> = ({ species }) => {
-  const renderCards = ({ name, image }: SpecieProps, index: number) => (
-    <Card key={`specie-item-${index}`}>
-      <Avatar src={image} />
+export const SpeciesContainer: FC<SpeciesContainerProps> = ({
+  species,
+  loading,
+  disablePrev,
+  disableNext,
+  onClickPrev,
+  onClickNext,
+}) => {
+  const handleClickCard = () => console.log('handleClickCard');
+
+  // renders
+  const renderCard = ({ name }: SpecieType, index: number) => (
+    <Card key={`specie-item-${index}`} onClick={handleClickCard}>
       <CardName>{name}</CardName>
     </Card>
   );
 
+  const renderCards = () =>
+    !loading && <Cards>{species.map(renderCard)}</Cards>;
+
+  const renderPagination = () =>
+    !loading && (
+      <Pagination
+        disablePrev={disablePrev}
+        disableNext={disableNext}
+        onClickPrev={onClickPrev}
+        onClickNext={onClickNext}
+      />
+    );
+
+  // @TODO: Relpace by placeholder component
+  const renderLoading = () => loading && <p>loading...</p>;
+
   return (
     <Container>
       <Title>Species Container</Title>
-      <Cards>{species.map(renderCards)}</Cards>
+      {renderCards()}
+      {renderLoading()}
+      {renderPagination()}
     </Container>
   );
 };

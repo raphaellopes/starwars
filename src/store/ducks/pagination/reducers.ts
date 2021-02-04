@@ -1,11 +1,18 @@
 // Locals
-import { Types, PaginationStateType, PaginationActionTypes } from './types';
+import {
+  Types,
+  PaginationStateType,
+  PaginationActionTypes,
+  PaginationItemType,
+} from './types';
 
+const emptyItem: PaginationItemType = {
+  pages: {},
+  currentPage: undefined,
+};
 export const initialState: PaginationStateType = {
-  characters: {
-    pages: {},
-    currentPage: undefined,
-  },
+  characters: emptyItem,
+  species: emptyItem,
 };
 
 export const paginationReducers = (

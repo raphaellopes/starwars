@@ -1,9 +1,11 @@
-export interface SpecieProps {
-  name: string;
-  description: string;
-  image: string;
-}
+// Locals
+import { SpecieType } from '~store/ducks/species/types';
 
 export interface SpeciesContainerProps {
-  species: SpecieProps[];
+  loading: boolean;
+  species: SpecieType[];
+  disablePrev: boolean;
+  disableNext: boolean;
+  onClickPrev: () => void;
+  onClickNext: () => void;
 }

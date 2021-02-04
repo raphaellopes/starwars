@@ -1,6 +1,6 @@
 // Locals
 import { styled } from '~styles';
-import { Card as CardComp } from '~components';
+import { Card as CardComp, Pagination as PaginationComp } from '~components';
 
 export const Cards = styled.div``;
 
@@ -20,5 +20,11 @@ export const CardName = styled.p`
     margin: 0;
     font-weight: 600;
     margin-left: ${sizes.margins.medium};
+  `}
+`;
+
+export const Pagination = styled(PaginationComp)`
+  ${({ theme: { sizes } }) => `
+    margin-top: ${sizes.margins.medium};
   `}
 `;
