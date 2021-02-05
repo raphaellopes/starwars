@@ -21,7 +21,6 @@ export const charactersFetch = (page?: number): CharactersActionTypes => ({
 export const charactersData = (payload: {
   page: number;
   data: CharactersDataType;
-  totalPages: number;
 }): CharactersActionTypes => ({
   type: Types.CHAR_DATA,
   payload,

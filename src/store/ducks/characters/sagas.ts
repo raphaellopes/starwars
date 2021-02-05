@@ -39,7 +39,6 @@ export function* charactersFetch({ payload }: any) {
       actions.charactersData({
         data: formattedData,
         page,
-        totalPages: Math.ceil(data.count / perPage),
       })
     );
     yield put(actions.charactersStatus('fetched'));

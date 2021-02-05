@@ -21,7 +21,6 @@ export const speciesFetch = (page?: number): SpeciesActionTypes => ({
 export const speciesData = (payload: {
   page: number;
   data: SpeciesDataType;
-  totalPages: number;
 }): SpeciesActionTypes => ({
   type: Types.SPECIES_DATA,
   payload,

@@ -37,7 +37,7 @@ export interface SpeciesStatusAction {
 
 export interface SpeciesDataAction {
   type: typeof Types.SPECIES_DATA;
-  payload: { page: number; totalPages?: number; data: SpeciesDataType };
+  payload: { page: number; data: SpeciesDataType };
 }
 
 export type SpeciesActionTypes =

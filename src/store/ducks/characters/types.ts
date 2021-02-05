@@ -37,7 +37,7 @@ export interface CharactersStatusAction {
 
 export interface CharactersDataAction {
   type: typeof Types.CHAR_DATA;
-  payload: { page: number; totalPages?: number; data: CharactersDataType };
+  payload: { page: number; data: CharactersDataType };
 }
 
 export type CharactersActionTypes =

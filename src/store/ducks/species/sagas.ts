@@ -39,7 +39,6 @@ export function* speciesFetch({ payload }: any) {
       actions.speciesData({
         data: formattedData,
         page,
-        totalPages: Math.ceil(data.count / perPage),
       })
     );
     yield put(actions.speciesStatus('fetched'));
