@@ -2,7 +2,7 @@
 import React, { FC, useEffect } from 'react';
 
 // Locals
-import { useCharacterHook, CharacterType } from '~store/ducks/characters';
+import { useCharacterHook } from '~store/ducks/characters';
 import { usePaginationHook } from '~store/ducks/pagination';
 import { CharactersContainer } from './containers';
 

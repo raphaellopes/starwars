@@ -1,11 +1,5 @@
 // Locals
-import {
-  Types,
-  PaginationReducersType,
-  PaginationDataAction,
-  PaginationSetPageAction,
-  PaginationActionTypes,
-} from './types';
+import { Types, PaginationReducersType, PaginationActionTypes } from './types';
 
 export const paginationData = (
   payload: { ids: string[]; page: number; totalPages?: number },

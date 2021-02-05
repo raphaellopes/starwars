@@ -14,7 +14,7 @@ export const Menu: FC<MenuProps> = ({ items, ...rest }) => {
   );
 
   return (
-    <Wrapper>
+    <Wrapper {...rest}>
       <Container>
         <Items>{items.map(renderItem)}</Items>
       </Container>

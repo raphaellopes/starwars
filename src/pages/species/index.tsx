@@ -2,11 +2,9 @@
 import React, { FC, useEffect } from 'react';
 
 // Locals
-import { useSpecieHook, SpecieType } from '~store/ducks/species';
+import { useSpecieHook } from '~store/ducks/species';
 import { usePaginationHook } from '~store/ducks/pagination';
 import { SpeciesContainer } from './containers';
-
-import mock from './mock';
 
 const Species: FC = () => {
   const { dispatchers, loading, dataByPage } = useSpecieHook();
