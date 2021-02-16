@@ -3,7 +3,7 @@ import {
   Types,
   SpeciesActionTypes,
   SpeciesStatusType,
-  SpeciesDataType,
+  SpecieType,
 } from './types';
 
 export const speciesStatus = (
@@ -20,7 +20,7 @@ export const speciesFetch = (page?: number): SpeciesActionTypes => ({
 
 export const speciesData = (payload: {
   page: number;
-  data: SpeciesDataType;
+  data: SpecieType[];
 }): SpeciesActionTypes => ({
   type: Types.SPECIES_DATA,
   payload,

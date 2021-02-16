@@ -3,9 +3,9 @@ import { combineReducers } from 'redux';
 import { all } from 'redux-saga/effects';
 
 // Locals
-import { charactersReducer, charactersSagasWatcher } from './characters';
-import { speciesReducer, speciesSagasWatcher } from './species';
-import { paginationReducers } from './pagination';
+import { charactersReducer } from './characters';
+import { speciesReducer } from './species';
+import { paginationReducers, paginationSagasWatcher } from './pagination';
 
 const rootReducer = combineReducers({
   characters: charactersReducer,
@@ -18,5 +18,5 @@ export default rootReducer;
 export type RootStateType = ReturnType<typeof rootReducer>;
 
 export function* rootSagas() {
-  yield all([charactersSagasWatcher(), speciesSagasWatcher()]);
+  yield all([paginationSagasWatcher()]);
 }

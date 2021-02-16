@@ -22,12 +22,13 @@ export const paginationReducers = (
   switch (action.type) {
     case Types.PAGINATION_DATA: {
       const { payload, meta } = action;
+      const ids: string[] = payload.data.map((item) => item.id);
       return {
         ...state,
         [meta.reducerKey]: {
           pages: {
             ...state[meta.reducerKey]?.pages,
-            [payload.page]: { ids: payload.ids },
+            [payload.page]: { ids },
           },
           currentPage: payload.page,
           totalPages: state[meta.reducerKey]?.totalPages

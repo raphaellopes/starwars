@@ -1,5 +1,11 @@
 // Locals
-import { CharactersStateType, CharactersActionTypes, Types } from './types';
+import {
+  CharactersStateType,
+  CharactersActionTypes,
+  Types,
+  CharactersDataType,
+  CharacterType,
+} from './types';
 
 export const initialState: CharactersStateType = {
   status: 'initial',
@@ -26,12 +32,15 @@ export const charactersReducer = (
       return result;
     }
     case Types.CHAR_DATA: {
+      const formattedData: CharactersDataType = {};
       const { data } = action.payload;
+
+      data.map((item: CharacterType) => (formattedData[item.id] = item));
 
       return {
         ...state,
         loading: false,
-        data: { ...state.data, ...data },
+        data: { ...state.data, ...formattedData },
       };
     }
     default:

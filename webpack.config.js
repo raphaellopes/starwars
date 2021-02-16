@@ -12,6 +12,9 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
   },
+  devServer: {
+    historyApiFallback: true,
+  },
   resolve: {
     alias: {
       '~components': path.resolve(srcPath, 'components'),

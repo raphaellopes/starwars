@@ -7,7 +7,7 @@ import { usePaginationHook } from '~store/ducks/pagination';
 import { SpeciesContainer } from './containers';
 
 const Species: FC = () => {
-  const { dispatchers, loading, dataByPage } = useSpecieHook();
+  const { loading, dataByPage } = useSpecieHook();
   const {
     currentPage: page,
     totalPages,
@@ -18,7 +18,7 @@ const Species: FC = () => {
   const disableNext = page === totalPages;
 
   useEffect(() => {
-    !species.length && dispatchers.request(page);
+    !species.length && paginationDispatchers.request(page);
   }, [page]);
 
   const handleClickNext = () => {

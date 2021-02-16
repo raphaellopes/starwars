@@ -15,10 +15,13 @@ export const usePaginationHook = (reducerKey: PaginationReducersType) => {
   const setCurrentPage = (page: number) =>
     dispatch(actions.paginationSetPage({ currentPage: page }, { reducerKey }));
 
+  const request = (page: number) =>
+    dispatch(actions.paginationRequest({ page }, { reducerKey }));
+
   return {
     pages,
     currentPage,
     totalPages,
-    dispatchers: { setCurrentPage },
+    dispatchers: { setCurrentPage, request },
   };
 };

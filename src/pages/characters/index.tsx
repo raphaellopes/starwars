@@ -7,7 +7,7 @@ import { usePaginationHook } from '~store/ducks/pagination';
 import { CharactersContainer } from './containers';
 
 const Characters: FC = () => {
-  const { dispatchers, loading, dataByPage } = useCharacterHook();
+  const { loading, dataByPage } = useCharacterHook();
   const {
     currentPage: page,
     totalPages,
@@ -18,7 +18,7 @@ const Characters: FC = () => {
   const disableNext = page === totalPages;
 
   useEffect(() => {
-    !characters.length && dispatchers.request(page);
+    !characters.length && paginationDispatchers.request(page);
   }, [page]);
 
   const handleClickNext = () => {

@@ -1,5 +1,11 @@
 // Locals
-import { SpeciesStateType, SpeciesActionTypes, Types } from './types';
+import {
+  SpeciesStateType,
+  SpeciesActionTypes,
+  Types,
+  SpeciesDataType,
+  SpecieType,
+} from './types';
 
 export const initialState: SpeciesStateType = {
   status: 'initial',
@@ -26,12 +32,14 @@ export const speciesReducer = (
       return result;
     }
     case Types.SPECIES_DATA: {
+      const formattedData: SpeciesDataType = {};
       const { data } = action.payload;
+      data.map((item: SpecieType) => (formattedData[item.id] = item));
 
       return {
         ...state,
         loading: false,
-        data: { ...state.data, ...data },
+        data: { ...state.data, ...formattedData },
       };
     }
     default:

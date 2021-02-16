@@ -7,6 +7,8 @@ import * as paginationActions from '../pagination/actions';
 import { Types, CharacterType, CharactersDataType } from './types';
 import * as actions from './actions';
 
+// @TODO: This code is legacy. Refac this file when you create request for
+//        single character data. It will not be reusable
 export function* charactersFetch({ payload }: any) {
   try {
     const { page } = payload;
@@ -22,12 +24,11 @@ export function* charactersFetch({ payload }: any) {
     }));
 
     result.map((item: CharacterType) => (formattedData[item.id] = item));
-    const ids: string[] = result.map((item) => item.id);
 
     yield put(
       paginationActions.paginationData(
         {
-          ids,
+          data: result,
           page,
           totalPages: Math.ceil(data.count / perPage),
         },
@@ -35,12 +36,6 @@ export function* charactersFetch({ payload }: any) {
       )
     );
 
-    yield put(
-      actions.charactersData({
-        data: formattedData,
-        page,
-      })
-    );
     yield put(actions.charactersStatus('fetched'));
   } catch (error) {
     console.error('>>> charactersFetch', { error });

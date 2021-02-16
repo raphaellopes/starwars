@@ -1,5 +1,6 @@
 // types
 export enum Types {
+  PAGINATION_REQUEST = 'pagination/request',
   PAGINATION_DATA = 'pagination/data',
   PAGINATION_SET_PAGE = 'pagination/set-page',
 }
@@ -22,9 +23,15 @@ export type PaginationStateType = {
 };
 
 // actions
+export interface PaginationRequestAction {
+  type: typeof Types.PAGINATION_REQUEST;
+  payload?: { page: number };
+  meta: { reducerKey: PaginationReducersType };
+}
+
 export interface PaginationDataAction {
   type: typeof Types.PAGINATION_DATA;
-  payload: { ids: string[]; page: number; totalPages?: number };
+  payload: { data: any[]; page: number; totalPages?: number };
   meta: { reducerKey: PaginationReducersType };
 }
 
@@ -35,5 +42,6 @@ export interface PaginationSetPageAction {
 }
 
 export type PaginationActionTypes =
+  | PaginationRequestAction
   | PaginationDataAction
   | PaginationSetPageAction;
