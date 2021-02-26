@@ -19,7 +19,7 @@ const Species: FC = () => {
   const disableNext = page === totalPages;
 
   useEffect(() => {
-    !species.length && paginationDispatchers.request(page);
+    !species.length && paginationDispatchers.request(page || 1);
   }, [page]);
 
   const handleClickNext = () => {

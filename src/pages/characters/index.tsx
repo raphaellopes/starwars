@@ -19,7 +19,7 @@ const Characters: FC = () => {
   const disableNext = page === totalPages;
 
   useEffect(() => {
-    !characters.length && paginationDispatchers.request(page);
+    !characters.length && paginationDispatchers.request(page || 1);
   }, [page]);
 
   const handleClickNext = () => {
