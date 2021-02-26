@@ -4,6 +4,7 @@ import React, { FC, useEffect } from 'react';
 // Locals
 import { useSpecieHook } from '~store/ducks/species';
 import { usePaginationHook } from '~store/ducks/pagination';
+import { PaginationReducersType } from '~store/ducks/pagination/types';
 import { SpeciesContainer } from './containers';
 
 const Species: FC = () => {
@@ -12,7 +13,7 @@ const Species: FC = () => {
     currentPage: page,
     totalPages,
     dispatchers: paginationDispatchers,
-  } = usePaginationHook('species');
+  } = usePaginationHook(PaginationReducersType.Species);
   const species = dataByPage(page);
   const disablePrev = page < 2;
   const disableNext = page === totalPages;

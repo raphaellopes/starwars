@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // Locals
 import { RootStateType as StateType } from '..';
 import { usePaginationHook } from '../pagination';
+import { PaginationReducersType } from '../pagination/types';
 import { SpeciesStatusType, SpecieType } from './types';
 import * as actions from './actions';
 
@@ -13,7 +14,7 @@ export const useSpecieHook = () => {
 
   const state = (state: StateType) => state.species;
   const { status, data, loading } = useSelector(state);
-  const pagination = usePaginationHook('species');
+  const pagination = usePaginationHook(PaginationReducersType.Species);
 
   const dataByPage = (page: number): SpecieType[] => {
     const ids = pagination.pages[page]?.ids || [];

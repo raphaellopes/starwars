@@ -4,6 +4,7 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 // Locals
 import api from '~services/api';
 import * as paginationActions from '../pagination/actions';
+import { PaginationReducersType } from '../pagination/types';
 import { Types, CharacterType, CharactersDataType } from './types';
 import * as actions from './actions';
 
@@ -32,7 +33,7 @@ export function* charactersFetch({ payload }: any) {
           page,
           totalPages: Math.ceil(data.count / perPage),
         },
-        { reducerKey: 'characters' }
+        { reducerKey: PaginationReducersType.Characters }
       )
     );
 

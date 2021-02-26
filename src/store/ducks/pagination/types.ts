@@ -6,7 +6,10 @@ export enum Types {
 }
 
 // types
-export type PaginationReducersType = 'characters' | 'species';
+export enum PaginationReducersType {
+  Characters = 'characters',
+  Species = 'species',
+}
 
 export interface PaginationItemType {
   pages: {

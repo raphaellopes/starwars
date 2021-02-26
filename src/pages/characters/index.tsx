@@ -4,6 +4,7 @@ import React, { FC, useEffect } from 'react';
 // Locals
 import { useCharacterHook } from '~store/ducks/characters';
 import { usePaginationHook } from '~store/ducks/pagination';
+import { PaginationReducersType } from '~store/ducks/pagination/types';
 import { CharactersContainer } from './containers';
 
 const Characters: FC = () => {
@@ -12,7 +13,7 @@ const Characters: FC = () => {
     currentPage: page,
     totalPages,
     dispatchers: paginationDispatchers,
-  } = usePaginationHook('characters');
+  } = usePaginationHook(PaginationReducersType.Characters);
   const characters = dataByPage(page);
   const disablePrev = page < 2;
   const disableNext = page === totalPages;
