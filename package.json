@@ -7,8 +7,8 @@
     "start": "webpack serve",
     "build": "webpack",
     "test": "jest",
-    "test:watch": "yarn test -- --watch",
-    "test:coverage": "yarn test -- --coverage"
+    "test:watch": "yarn test --watch",
+    "test:coverage": "yarn test --coverage"
   },
   "author": "Raphael Lopes",
   "license": "ISC",
