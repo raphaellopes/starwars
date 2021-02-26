@@ -4,11 +4,12 @@ import {
   PaginationStateType,
   PaginationActionTypes,
   PaginationItemType,
-} from './types';
+} from '../types';
 
 const emptyItem: PaginationItemType = {
   pages: {},
   currentPage: undefined,
+  totalPages: undefined,
 };
 export const initialState: PaginationStateType = {
   characters: emptyItem,
