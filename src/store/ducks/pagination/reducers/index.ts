@@ -1,6 +1,6 @@
 // Locals
 import {
-  Types,
+  PaginationCreators,
   PaginationStateType,
   PaginationActionTypes,
   PaginationItemType,
@@ -21,7 +21,7 @@ export const paginationReducers = (
   action: PaginationActionTypes
 ): PaginationStateType => {
   switch (action.type) {
-    case Types.PAGINATION_DATA: {
+    case PaginationCreators.PAGINATION_DATA: {
       const { payload, meta } = action;
       const ids: string[] = payload.data.map((item) => item.id);
       return {
@@ -39,7 +39,7 @@ export const paginationReducers = (
       };
     }
 
-    case Types.PAGINATION_SET_PAGE: {
+    case PaginationCreators.PAGINATION_SET_PAGE: {
       const { payload, meta } = action;
       return {
         ...state,

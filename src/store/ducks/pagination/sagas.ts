@@ -4,7 +4,7 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 // Locals
 import api from '~services/api';
 import * as paginationActions from '../pagination/actions';
-import { Types } from './types';
+import { PaginationCreators } from './types';
 import * as characterActions from '../characters/actions';
 import * as speciesActions from '../species/actions';
 
@@ -71,7 +71,7 @@ export function* paginationFetch({ payload, meta }: any) {
 
 // watchers
 export function* paginationFetchWatcher() {
-  yield takeLatest(Types.PAGINATION_REQUEST, paginationFetch);
+  yield takeLatest(PaginationCreators.PAGINATION_REQUEST, paginationFetch);
 }
 
 export function* paginationSagasWatcher() {
