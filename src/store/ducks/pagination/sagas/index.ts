@@ -3,8 +3,8 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 // Locals
 import api from '~services/api';
-import * as paginationActions from '../pagination/actions';
-import { PaginationCreators } from './types';
+import * as paginationActions from '../../pagination/actions';
+import { PaginationCreators } from '../types';
 
 export function* paginationFetch({ payload, meta }: any) {
   try {
