@@ -1,6 +1,6 @@
 import * as reducers from './index';
 import * as actions from '../actions';
-import { Types, PaginationReducersType } from '../types';
+import { PaginationCreators, PaginationReducersType } from '../types';
 
 describe('redux | pagination | reducers', () => {
   test('should return the initial state', () => {
@@ -22,7 +22,7 @@ describe('redux | pagination | reducers', () => {
       },
     };
     const actions = {
-      type: Types.PAGINATION_DATA,
+      type: PaginationCreators.PAGINATION_DATA,
       payload,
       meta: { reducerKey: PaginationReducersType.Characters },
     };
@@ -37,7 +37,7 @@ describe('redux | pagination | reducers', () => {
       },
     };
     const actions = {
-      type: Types.PAGINATION_SET_PAGE,
+      type: PaginationCreators.PAGINATION_SET_PAGE,
       payload,
       meta: { reducerKey: PaginationReducersType.Characters },
     };
