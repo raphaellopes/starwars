@@ -1,41 +1,43 @@
 // Vendors
-import { all, call, put, takeLatest } from 'redux-saga/effects';
+import { all, put, takeLatest } from 'redux-saga/effects';
 
 // Locals
-import api from '~services/api';
-import { Types, SpecieType, SpeciesDataType } from './types';
+import {
+  PaginationCreators,
+  PaginationReducersType,
+  PaginationDataAction,
+  PaginationRequestAction,
+} from '../pagination';
 import * as actions from './actions';
 
-// @TODO: This code is legacy. Refac this file when you create request for
-//        single specie data. It will not be reusable
-export function* speciesFetch({ payload }: any) {
-  try {
-    const { page } = payload;
-    yield put(actions.speciesStatus('fetching'));
-    const { data } = yield call(api.get, `species/?page=${page}`);
-    const formattedData: SpeciesDataType = {};
+const isSameReducer = (reducerKey: PaginationReducersType) =>
+  reducerKey === PaginationReducersType.Species;
 
-    const result: SpecieType[] = data.results.map((item: any) => ({
-      id: item.url.match(/(\d+)/)[0],
-      name: item.name,
-      classification: item.classification,
-    }));
+export function* speciesListFetch({ meta }: PaginationRequestAction) {
+  if (!isSameReducer(meta.reducerKey)) return;
 
-    result.map((item: SpecieType) => (formattedData[item.id] = item));
+  yield put(actions.speciesStatus('fetching'));
+}
 
-    yield put(actions.speciesStatus('fetched'));
-  } catch (error) {
-    console.error('>>> speciesFetch', { error });
-    yield put(actions.speciesStatus('fetched'));
-  }
+export function* speciesListData({ payload, meta }: PaginationDataAction) {
+  if (!isSameReducer(meta.reducerKey)) return;
+
+  const { data, page } = payload;
+  yield put(actions.speciesStatus('fetched'));
+  yield put(
+    actions.speciesData({
+      page,
+      data,
+    })
+  );
 }
 
 // watchers
-export function* speciesFetchWatcher() {
-  yield takeLatest(Types.SPECIES_FETCH, speciesFetch);
+export function* speciesListWatcher() {
+  yield takeLatest(PaginationCreators.PAGINATION_REQUEST, speciesListFetch);
+  yield takeLatest(PaginationCreators.PAGINATION_DATA, speciesListData);
 }
 
 export function* speciesSagasWatcher() {
-  // all
-  yield all([speciesFetchWatcher()]);
+  yield all([speciesListWatcher()]);
 }

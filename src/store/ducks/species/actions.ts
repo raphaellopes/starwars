@@ -1,6 +1,6 @@
 // Locals
 import {
-  Types,
+  SpeciesCreators,
   SpeciesActionTypes,
   SpeciesStatusType,
   SpecieType,
@@ -9,12 +9,12 @@ import {
 export const speciesStatus = (
   status: SpeciesStatusType
 ): SpeciesActionTypes => ({
-  type: Types.SPECIES_STATUS,
+  type: SpeciesCreators.SPECIES_STATUS,
   payload: { status },
 });
 
 export const speciesFetch = (page?: number): SpeciesActionTypes => ({
-  type: Types.SPECIES_FETCH,
+  type: SpeciesCreators.SPECIES_FETCH,
   payload: { page: page ? page : 1 },
 });
 
@@ -22,6 +22,6 @@ export const speciesData = (payload: {
   page: number;
   data: SpecieType[];
 }): SpeciesActionTypes => ({
-  type: Types.SPECIES_DATA,
+  type: SpeciesCreators.SPECIES_DATA,
   payload,
 });

@@ -2,16 +2,26 @@
 import { all, put, takeLatest } from 'redux-saga/effects';
 
 // Locals
-import { PaginationCreators } from '../pagination';
+import {
+  PaginationCreators,
+  PaginationReducersType,
+  PaginationDataAction,
+  PaginationRequestAction,
+} from '../pagination';
 import * as actions from './actions';
 
-export function* charactersListFetch() {
-  console.log('charactersFetch');
+const isSameReducer = (reducerKey: PaginationReducersType) =>
+  reducerKey === PaginationReducersType.Characters;
+
+export function* charactersListFetch({ meta }: PaginationRequestAction) {
+  if (!isSameReducer(meta.reducerKey)) return;
+
   yield put(actions.charactersStatus('fetching'));
 }
 
-// @TODO: Fix types
-export function* charactersListData({ payload }: any) {
+export function* charactersListData({ payload, meta }: PaginationDataAction) {
+  if (!isSameReducer(meta.reducerKey)) return;
+
   const { data, page } = payload;
   yield put(actions.charactersStatus('fetched'));
   yield put(

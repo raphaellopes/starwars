@@ -1,5 +1,5 @@
 // types
-export enum Types {
+export enum SpeciesCreators {
   SPECIES_STATUS = 'species/status',
   SPECIES_FETCH = 'species/fetch',
   SPECIES_DATA = 'species/data',
@@ -26,17 +26,17 @@ export interface SpeciesStateType {
 
 // actions
 export interface SpeciesFetchAction {
-  type: typeof Types.SPECIES_FETCH;
+  type: typeof SpeciesCreators.SPECIES_FETCH;
   payload?: { page: number };
 }
 
 export interface SpeciesStatusAction {
-  type: typeof Types.SPECIES_STATUS;
+  type: typeof SpeciesCreators.SPECIES_STATUS;
   payload: { status: SpeciesStatusType };
 }
 
 export interface SpeciesDataAction {
-  type: typeof Types.SPECIES_DATA;
+  type: typeof SpeciesCreators.SPECIES_DATA;
   payload: { page: number; data: SpecieType[] };
 }
 

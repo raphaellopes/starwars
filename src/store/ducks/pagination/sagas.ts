@@ -5,8 +5,6 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 import api from '~services/api';
 import * as paginationActions from '../pagination/actions';
 import { PaginationCreators } from './types';
-// import * as characterActions from '../characters/actions';
-// import * as speciesActions from '../species/actions';
 
 export function* paginationFetch({ payload, meta }: any) {
   try {
@@ -32,21 +30,8 @@ export function* paginationFetch({ payload, meta }: any) {
         { reducerKey: meta.reducerKey }
       )
     );
-
-    // @TODO: improve the lines bellow
-    // if (meta.reducerKey === 'species') {
-    // yield put(
-    // speciesActions.speciesData({
-    // page,
-    // data: result,
-    // })
-    // );
-    // }
-
-    // yield setLoading(meta.reducerKey, 'fetched');
   } catch (error) {
     console.error('>>> paginationFetch', { error });
-    // yield setLoading(meta.reducerKey, 'fetched');
   }
 }
 
@@ -56,6 +41,5 @@ export function* paginationFetchWatcher() {
 }
 
 export function* paginationSagasWatcher() {
-  // all
   yield all([paginationFetchWatcher()]);
 }
