@@ -4,14 +4,14 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 // Locals
 import api from '~services/api';
 import * as paginationActions from '../../pagination/actions';
-import { PaginationCreators } from '../types';
+import { PaginationCreators, PaginationRequestAction } from '../types';
+import { API_PATHS } from './constants';
 
-export function* paginationFetch({ payload, meta }: any) {
+export function* paginationFetch({ payload, meta }: PaginationRequestAction) {
   try {
     const { page } = payload;
 
-    // @TODO: improve it
-    const apiPage = meta.reducerKey === 'characters' ? 'people' : 'species';
+    const apiPage = API_PATHS[meta.reducerKey];
     const { data } = yield call(api.get, `${apiPage}/?page=${page}`);
     const perPage = 10;
 
