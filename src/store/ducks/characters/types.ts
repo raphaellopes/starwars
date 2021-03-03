@@ -1,5 +1,5 @@
 // types
-export enum Types {
+export enum CharactersCreators {
   CHAR_STATUS = 'characters/status',
   CHAR_FETCH = 'characters/fetch',
   CHAR_DATA = 'characters/data',
@@ -26,17 +26,17 @@ export interface CharactersStateType {
 
 // actions
 export interface CharactersFetchAction {
-  type: typeof Types.CHAR_FETCH;
+  type: typeof CharactersCreators.CHAR_FETCH;
   payload?: { page: number };
 }
 
 export interface CharactersStatusAction {
-  type: typeof Types.CHAR_STATUS;
+  type: typeof CharactersCreators.CHAR_STATUS;
   payload: { status: CharactersStatusType };
 }
 
 export interface CharactersDataAction {
-  type: typeof Types.CHAR_DATA;
+  type: typeof CharactersCreators.CHAR_DATA;
   payload: { page: number; data: CharacterType[] };
 }
 

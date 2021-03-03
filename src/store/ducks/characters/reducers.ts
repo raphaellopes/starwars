@@ -2,7 +2,7 @@
 import {
   CharactersStateType,
   CharactersActionTypes,
-  Types,
+  CharactersCreators,
   CharactersDataType,
   CharacterType,
 } from './types';
@@ -18,7 +18,7 @@ export const charactersReducer = (
   action: CharactersActionTypes
 ): CharactersStateType => {
   switch (action.type) {
-    case Types.CHAR_STATUS: {
+    case CharactersCreators.CHAR_STATUS: {
       const payloadStatus = action.payload?.status;
       const { status } = state;
       const result =
@@ -31,7 +31,7 @@ export const charactersReducer = (
             };
       return result;
     }
-    case Types.CHAR_DATA: {
+    case CharactersCreators.CHAR_DATA: {
       const formattedData: CharactersDataType = {};
       const { data } = action.payload;
 
@@ -39,7 +39,6 @@ export const charactersReducer = (
 
       return {
         ...state,
-        loading: false,
         data: { ...state.data, ...formattedData },
       };
     }
