@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 // Locals
 import { Menu } from '../menu';
-import { Container } from './styles';
+import { Container, Bar } from './styles';
 
 export const Header: FC<HTMLAttributes<HTMLDivElement>> = (props) => {
   const history = useHistory();
@@ -26,6 +26,7 @@ export const Header: FC<HTMLAttributes<HTMLDivElement>> = (props) => {
 
   return (
     <Container {...props}>
+      <Bar>Salve</Bar>
       <Menu items={menuItems} />
     </Container>
   );

@@ -6,9 +6,11 @@ import baseStyled, {
 
 // Locals
 import { sizes } from './sizes';
+import { colors } from './colors';
 
 export const theme = {
   sizes,
+  colors,
 };
 
 export type Theme = typeof theme;
