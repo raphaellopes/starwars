@@ -1,4 +1,5 @@
 // Vendors
+require('./icons.font');
 import React from 'react';
 import { render } from 'react-dom';
 
