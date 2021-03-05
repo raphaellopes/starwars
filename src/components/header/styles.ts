@@ -12,3 +12,5 @@ export const Bar = styled.div`
     padding: ${sizes.paddings.large};
   `}
 `;
+
+export const Logo = styled.img``;

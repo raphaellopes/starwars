@@ -17,8 +17,9 @@
       "~config/*": ["config/*"],
       "~styles": ["styles"],
       "~services/*": ["services/*"],
-      "~store/*": ["store/*"]
+      "~store/*": ["store/*"],
+      "~assets/*": ["assets/*"]
     }
   },
-  "include": ["src/index.tsx"]
+  "include": ["src/index.tsx", "src/custom.d.ts"]
 }

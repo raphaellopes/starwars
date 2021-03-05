@@ -22,6 +22,7 @@ module.exports = {
       '~styles': path.resolve(srcPath, 'styles'),
       '~services': path.resolve(srcPath, 'services'),
       '~store': path.resolve(srcPath, 'store'),
+      '~assets': path.resolve(srcPath, 'assets'),
     },
     extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
   },
@@ -36,6 +37,10 @@ module.exports = {
         enforce: 'pre',
         test: /\.js$/,
         loader: 'source-map-loader',
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
       },
     ],
   },
