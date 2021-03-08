@@ -22,6 +22,15 @@ export const borderRadius = {
   huge: BorderRadiusSizes.huge,
 };
 
+// icons
+enum IconSizes {
+  large = '24px',
+}
+
+export const icons = {
+  large: IconSizes.large,
+};
+
 // paddings
 enum PaddingSizes {
   medium = '10px',
@@ -42,4 +51,4 @@ export const margins = {
   medium: MarginSizes.medium,
 };
 
-export const sizes = { avatar, borderRadius, paddings, margins };
+export const sizes = { avatar, borderRadius, icons, paddings, margins };

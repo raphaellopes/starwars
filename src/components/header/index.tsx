@@ -4,7 +4,8 @@ import { useHistory } from 'react-router-dom';
 
 // Locals
 import { Menu } from '../menu';
-import { Container, Bar, Logo, Icon } from './styles';
+import { Toolbar } from '../toolbar';
+import { Container, Logo, HeaderIcon } from './styles';
 
 // assets
 import LogoSvg from '~assets/logos/default.svg';
@@ -29,10 +30,10 @@ export const Header: FC<HTMLAttributes<HTMLDivElement>> = (props) => {
 
   // renders
   const renderBar = () => (
-    <Bar>
-      <Logo src={LogoSvg} />
-      <Icon name="menu" />
-    </Bar>
+    <Toolbar
+      componentLeft={<Logo src={LogoSvg} />}
+      componentRight={<HeaderIcon name="menu" />}
+    />
   );
 
   return (
