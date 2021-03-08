@@ -4,7 +4,7 @@ import React, { FC } from 'react';
 // Locals
 import { Button } from '../buttons';
 import { PaginationProps } from './types';
-import { Container } from './styles';
+import { Container, Icon } from './styles';
 
 export const Pagination: FC<PaginationProps> = ({
   disablePrev,
@@ -15,10 +15,12 @@ export const Pagination: FC<PaginationProps> = ({
 }) => (
   <Container {...rest}>
     <Button onClick={onClickPrev} disabled={disablePrev}>
-      prev
+      <Icon name="arrow-back" sideSpace="right" />
+      Previous
     </Button>
     <Button onClick={onClickNext} disabled={disableNext}>
-      next
+      Next
+      <Icon name="arrow-forward" sideSpace="left" />
     </Button>
   </Container>
 );

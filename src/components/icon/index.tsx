@@ -14,6 +14,4 @@ export const Icon = styled.i.attrs<IconType>(
   })
 )<IconType>`
   display: inline-block;
-  width: 24px;
-  height: 24px;
 `;
