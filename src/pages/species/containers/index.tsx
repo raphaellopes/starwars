@@ -3,9 +3,9 @@ import React, { FC } from 'react';
 
 // Locals
 import { SpecieType } from '~store/ducks/species/types';
-import { Container, Title } from '~components';
+import { Title, CardForward } from '~components';
 import { SpeciesContainerProps } from './types';
-import { Cards, Card, CardName, Pagination } from './styles';
+import { Container, Cards, Pagination } from './styles';
 
 export const SpeciesContainer: FC<SpeciesContainerProps> = ({
   species,
@@ -19,9 +19,11 @@ export const SpeciesContainer: FC<SpeciesContainerProps> = ({
 
   // renders
   const renderCard = ({ name }: SpecieType, index: number) => (
-    <Card key={`specie-item-${index}`} onClick={handleClickCard}>
-      <CardName>{name}</CardName>
-    </Card>
+    <CardForward
+      key={`specie--item-${index}`}
+      onClick={handleClickCard}
+      text={name}
+    />
   );
 
   const renderCards = () =>

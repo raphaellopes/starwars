@@ -4,8 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 // Locals
 import { Menu } from '../menu';
-import { Toolbar } from '../toolbar';
-import { Container, Logo, HeaderIcon } from './styles';
+import { Container, Logo, Toolbar, HeaderIcon } from './styles';
 
 // assets
 import LogoSvg from '~assets/logos/default.svg';

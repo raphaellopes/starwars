@@ -3,9 +3,9 @@ import React, { FC } from 'react';
 
 // Locals
 import { CharacterType } from '~store/ducks/characters/types';
-import { Container, Title, CardForward } from '~components';
+import { Title, CardForward } from '~components';
 import { CharactersContainerProps } from './types';
-import { Cards, Pagination } from './styles';
+import { Container, Cards, Pagination } from './styles';
 
 export const CharactersContainer: FC<CharactersContainerProps> = ({
   characters,
@@ -44,7 +44,7 @@ export const CharactersContainer: FC<CharactersContainerProps> = ({
 
   return (
     <Container>
-      <Title>Characters Container</Title>
+      <Title>Characters</Title>
       {renderCards()}
       {renderLoading()}
       {renderPagination()}

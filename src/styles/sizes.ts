@@ -51,4 +51,20 @@ export const margins = {
   medium: MarginSizes.medium,
 };
 
-export const sizes = { avatar, borderRadius, icons, paddings, margins };
+// screens
+enum ScreenSizes {
+  small = '420px',
+}
+
+export const mediaScreens = {
+  small: `(min-width: ${ScreenSizes.small})`,
+};
+
+export const sizes = {
+  avatar,
+  borderRadius,
+  icons,
+  paddings,
+  margins,
+  mediaScreens,
+};

@@ -2,9 +2,8 @@
 import React, { FC } from 'react';
 
 // Locals
-import { Button } from '../buttons';
 import { PaginationProps } from './types';
-import { Container, Icon } from './styles';
+import { Container, Button, Icon } from './styles';
 
 export const Pagination: FC<PaginationProps> = ({
   disablePrev,

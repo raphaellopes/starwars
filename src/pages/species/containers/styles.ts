@@ -1,30 +1,28 @@
 // Locals
 import { styled } from '~styles';
-import { Card as CardComp, Pagination as PaginationComp } from '~components';
+import {
+  Pagination as PaginationComp,
+  Container as ContainerComp,
+} from '~components';
 
 export const Cards = styled.div``;
 
-export const Card = styled(CardComp)`
-  ${({ theme: { sizes } }) => `
-    display: flex;
-    align-items: center;
-    &:not(:last-child) {
-      margin-bottom: ${sizes.margins.medium};
+export const Pagination = styled(PaginationComp)`
+  ${({ theme: { colors, sizes } }) => `
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: ${colors.light};
+    padding: ${sizes.paddings.medium};
+
+    @media ${sizes.mediaScreens.small} {
+      margin-top: ${sizes.margins.medium};
+      position: relative;
     }
   `}
 `;
 
-// @TODO: add some thypograpy
-export const CardName = styled.p`
-  ${({ theme: { sizes } }) => `
-    margin: 0;
-    font-weight: 600;
-    margin-left: ${sizes.margins.medium};
-  `}
-`;
-
-export const Pagination = styled(PaginationComp)`
-  ${({ theme: { sizes } }) => `
-    margin-top: ${sizes.margins.medium};
-  `}
+export const Container = styled(ContainerComp)`
+  padding-bottom: 60px;
 `;
