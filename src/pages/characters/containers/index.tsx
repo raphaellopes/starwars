@@ -3,9 +3,9 @@ import React, { FC } from 'react';
 
 // Locals
 import { CharacterType } from '~store/ducks/characters/types';
-import { Container, Title } from '~components';
+import { Container, Title, CardForward } from '~components';
 import { CharactersContainerProps } from './types';
-import { Cards, Card, CardName, Pagination } from './styles';
+import { Cards, Pagination } from './styles';
 
 export const CharactersContainer: FC<CharactersContainerProps> = ({
   characters,
@@ -19,9 +19,11 @@ export const CharactersContainer: FC<CharactersContainerProps> = ({
 
   // renders
   const renderCard = ({ name }: CharacterType, index: number) => (
-    <Card key={`character-item-${index}`} onClick={handleClickCard}>
-      <CardName>{name}</CardName>
-    </Card>
+    <CardForward
+      key={`character-item-${index}`}
+      onClick={handleClickCard}
+      text={name}
+    />
   );
 
   const renderCards = () =>

@@ -2,10 +2,12 @@ export const colors = {
   primary: '#FCA311',
   primaryLight: '#FDC05D',
 
-  neutral: '#a99797',
+  platinum: '#E5E5E5',
 
-  // mono
+  // neutral
+  neutral: '#a99797',
   darkest: '#3C3C3C',
+  dark: '#909090',
   light: '#FFFFFF',
 
   // translucedent
