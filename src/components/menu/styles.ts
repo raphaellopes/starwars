@@ -8,7 +8,8 @@ import { styled, colors } from '~styles';
 export const Wrapper = styled.nav`
   ${theme('mode', {
     light: css`
-      background-color: ${colors.opacity.light};
+      background-color: ${colors.dark};
+      color: ${colors.light};
     `,
   })};
 `;

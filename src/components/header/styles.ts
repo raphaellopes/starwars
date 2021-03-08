@@ -25,5 +25,9 @@ export const HeaderIcon = styled(Icon)`
   ${({ theme: { colors, sizes } }) => `
     font-size: ${sizes.icons.large};
     color: ${colors.light};
+
+    @media ${sizes.mediaScreens.small} {
+      display: none;
+    }
   `})
 `;

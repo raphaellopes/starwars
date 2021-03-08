@@ -1,5 +1,5 @@
 // Vendors
-import React, { FC, HTMLAttributes } from 'react';
+import React, { FC, HTMLAttributes, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 // Locals
@@ -11,6 +11,7 @@ import LogoSvg from '~assets/logos/default.svg';
 
 export const Header: FC<HTMLAttributes<HTMLDivElement>> = (props) => {
   const history = useHistory();
+  const [showMenu, setShowMenu] = useState<boolean>(false);
 
   const menuItems = [
     {
@@ -21,24 +22,29 @@ export const Header: FC<HTMLAttributes<HTMLDivElement>> = (props) => {
       label: 'Species',
       onClick: () => history.push('/species'),
     },
-    {
-      label: 'Planets',
-      onClick: () => console.log('>>> handle click planets'),
-    },
   ];
+
+  const handleClickHeaderMenu = () => setShowMenu(!showMenu);
 
   // renders
   const renderBar = () => (
     <Toolbar
       componentLeft={<Logo src={LogoSvg} />}
-      componentRight={<HeaderIcon name="menu" />}
+      componentRight={
+        <HeaderIcon
+          name={showMenu ? 'close' : 'menu'}
+          onClick={handleClickHeaderMenu}
+        />
+      }
     />
   );
+
+  const renderMenu = () => showMenu && <Menu items={menuItems} />;
 
   return (
     <Container {...props}>
       {renderBar()}
-      <Menu items={menuItems} />
+      {renderMenu()}
     </Container>
   );
 };

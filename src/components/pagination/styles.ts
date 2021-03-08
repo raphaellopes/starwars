@@ -30,8 +30,13 @@ export const Icon = styled(IconComp)<{ sideSpace: SideType }>`
 export const Button = styled(ButtonComp)`
   ${({ theme: { sizes } }) => `
     flex: 1;
+    display: flex;
     &:not(:last-child) {
       margin-right: ${sizes.margins.medium};
     }
   `}
+`;
+
+export const ButtonText = styled.span`
+  flex: 1;
 `;
