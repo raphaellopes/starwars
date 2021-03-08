@@ -1,9 +1,7 @@
 // Locals
 import { styled } from '~styles';
-import {
-  Pagination as PaginationComp,
-  Container as ContainerComp,
-} from '~components';
+import { Pagination as PaginationComp } from '../../pagination';
+import { Container as ContainerComp } from '../../layouts';
 
 export const Cards = styled.div``;
 

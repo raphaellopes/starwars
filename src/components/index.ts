@@ -6,5 +6,6 @@ export * from './icon';
 export * from './menu';
 export * from './layouts';
 export * from './pagination';
+export * from './templates';
 export * from './thypography';
 export * from './toolbar';

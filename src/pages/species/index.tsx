@@ -5,7 +5,7 @@ import React, { FC, useEffect } from 'react';
 import { useSpecieHook } from '~store/ducks/species';
 import { usePaginationHook } from '~store/ducks/pagination';
 import { PaginationReducersType } from '~store/ducks/pagination/types';
-import { SpeciesContainer } from './containers';
+import { ListPagination } from '~components';
 
 const Species: FC = () => {
   const { loading, dataByPage } = useSpecieHook();
@@ -33,9 +33,11 @@ const Species: FC = () => {
   };
 
   return (
-    <SpeciesContainer
+    <ListPagination
+      title="Species"
       loading={loading}
-      species={species}
+      cardKeyPrefix="species"
+      data={species}
       disablePrev={disablePrev}
       disableNext={disableNext}
       onClickPrev={handleClickPrev}

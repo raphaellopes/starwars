@@ -5,7 +5,7 @@ import React, { FC, useEffect } from 'react';
 import { useCharacterHook } from '~store/ducks/characters';
 import { usePaginationHook } from '~store/ducks/pagination';
 import { PaginationReducersType } from '~store/ducks/pagination/types';
-import { CharactersContainer } from './containers';
+import { ListPagination } from '~components';
 
 const Characters: FC = () => {
   const { loading, dataByPage } = useCharacterHook();
@@ -33,9 +33,11 @@ const Characters: FC = () => {
   };
 
   return (
-    <CharactersContainer
+    <ListPagination
+      title="Characters"
       loading={loading}
-      characters={characters}
+      cardKeyPrefix="characters"
+      data={characters}
       disablePrev={disablePrev}
       disableNext={disableNext}
       onClickPrev={handleClickPrev}

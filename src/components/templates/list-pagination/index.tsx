@@ -2,13 +2,14 @@
 import React, { FC } from 'react';
 
 // Locals
-import { SpecieType } from '~store/ducks/species/types';
 import { Title, CardForward } from '~components';
-import { SpeciesContainerProps } from './types';
+import { ListPaginationProps } from './types';
 import { Container, Cards, Pagination } from './styles';
 
-export const SpeciesContainer: FC<SpeciesContainerProps> = ({
-  species,
+export const ListPagination: FC<ListPaginationProps> = ({
+  title,
+  data,
+  cardKeyPrefix,
   loading,
   disablePrev,
   disableNext,
@@ -18,16 +19,15 @@ export const SpeciesContainer: FC<SpeciesContainerProps> = ({
   const handleClickCard = () => console.log('handleClickCard');
 
   // renders
-  const renderCard = ({ name }: SpecieType, index: number) => (
+  const renderCard = ({ name }: any, index: number) => (
     <CardForward
-      key={`specie--item-${index}`}
+      key={`${cardKeyPrefix}-item-${index}`}
       onClick={handleClickCard}
       text={name}
     />
   );
 
-  const renderCards = () =>
-    !loading && <Cards>{species.map(renderCard)}</Cards>;
+  const renderCards = () => !loading && <Cards>{data.map(renderCard)}</Cards>;
 
   const renderPagination = () =>
     !loading && (
@@ -44,7 +44,7 @@ export const SpeciesContainer: FC<SpeciesContainerProps> = ({
 
   return (
     <Container>
-      <Title>Species Container</Title>
+      <Title>{title}</Title>
       {renderCards()}
       {renderLoading()}
       {renderPagination()}
