@@ -4,7 +4,6 @@ import {
   SpeciesActionTypes,
   SpeciesCreators,
   SpeciesDataType,
-  SpecieType,
 } from './types';
 
 export const initialState: SpeciesStateType = {
@@ -32,13 +31,22 @@ export const speciesReducer = (
       return result;
     }
     case SpeciesCreators.SPECIES_DATA: {
-      const formattedData: SpeciesDataType = {};
       const { data } = action.payload;
-      data.map((item: SpecieType) => (formattedData[item.id] = item));
+
+      const result: SpeciesDataType = Object.entries(data).reduce(
+        (merged, [id, item]) => ({
+          ...merged,
+          [id]: {
+            ...(merged[id] || {}),
+            ...item,
+          },
+        }),
+        state.data
+      );
 
       return {
         ...state,
-        data: { ...state.data, ...formattedData },
+        data: result,
       };
     }
     default:

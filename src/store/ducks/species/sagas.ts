@@ -1,7 +1,9 @@
 // Vendors
 import { all, put, takeLatest } from 'redux-saga/effects';
+import { normalize } from 'normalizr';
 
 // Locals
+import { SpeciesSchema } from '../../schema';
 import {
   PaginationCreators,
   PaginationReducersType,
@@ -27,7 +29,8 @@ export function* speciesListData({ payload, meta }: PaginationDataAction) {
   yield put(
     actions.speciesData({
       page,
-      data,
+      // @ts-ignore
+      data: normalize(data, [SpeciesSchema]).entities.species,
     })
   );
 }

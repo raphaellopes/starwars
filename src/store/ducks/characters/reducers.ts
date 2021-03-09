@@ -1,10 +1,10 @@
 // Locals
+// import { CharactersSchema } from '../../schema';
 import {
   CharactersStateType,
   CharactersActionTypes,
   CharactersCreators,
   CharactersDataType,
-  CharacterType,
 } from './types';
 
 export const initialState: CharactersStateType = {
@@ -32,14 +32,21 @@ export const charactersReducer = (
       return result;
     }
     case CharactersCreators.CHAR_DATA: {
-      const formattedData: CharactersDataType = {};
       const { data } = action.payload;
-
-      data.map((item: CharacterType) => (formattedData[item.id] = item));
+      const result: CharactersDataType = Object.entries(data).reduce(
+        (merged, [id, item]) => ({
+          ...merged,
+          [id]: {
+            ...(merged[id] || {}),
+            ...item,
+          },
+        }),
+        state.data
+      );
 
       return {
         ...state,
-        data: { ...state.data, ...formattedData },
+        data: result,
       };
     }
     default:

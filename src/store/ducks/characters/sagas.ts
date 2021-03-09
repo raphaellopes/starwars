@@ -1,7 +1,9 @@
 // Vendors
 import { all, put, takeLatest } from 'redux-saga/effects';
+import { normalize } from 'normalizr';
 
 // Locals
+import { CharactersSchema } from '../../schema';
 import {
   PaginationCreators,
   PaginationReducersType,
@@ -23,11 +25,13 @@ export function* charactersListData({ payload, meta }: PaginationDataAction) {
   if (!isSameReducer(meta.reducerKey)) return;
 
   const { data, page } = payload;
+  console.log('>>> sagas', { data }, normalize(data, [CharactersSchema]));
   yield put(actions.charactersStatus('fetched'));
   yield put(
     actions.charactersData({
       page,
-      data,
+      // @ts-ignore
+      data: normalize(data, [CharactersSchema]).entities.characters,
     })
   );
 }
