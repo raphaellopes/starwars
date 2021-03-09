@@ -1,48 +1,19 @@
 // Vendors
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
+import { Switch, Route, useRouteMatch } from 'react-router-dom';
 
 // Locals
-import { useCharacterHook } from '~store/ducks/characters';
-import { usePaginationHook } from '~store/ducks/pagination';
-import { PaginationReducersType } from '~store/ducks/pagination/types';
-import { ListPagination } from '~components';
+import List from './list';
+import Detail from './detail';
 
 const Characters: FC = () => {
-  const { loading, dataByPage } = useCharacterHook();
-  const {
-    currentPage: page,
-    totalPages,
-    dispatchers: paginationDispatchers,
-  } = usePaginationHook(PaginationReducersType.Characters);
-  const characters = dataByPage(page);
-  const disablePrev = page < 2;
-  const disableNext = page === totalPages;
-
-  useEffect(() => {
-    !characters.length && paginationDispatchers.request(page || 1);
-  }, [page]);
-
-  const handleClickNext = () => {
-    const next = page + 1;
-    paginationDispatchers.setCurrentPage(next);
-  };
-
-  const handleClickPrev = () => {
-    const next = page - 1;
-    paginationDispatchers.setCurrentPage(next);
-  };
-
+  const match = useRouteMatch();
+  console.log('>>> Characters', { match });
   return (
-    <ListPagination
-      title="Characters"
-      loading={loading}
-      cardKeyPrefix="characters"
-      data={characters}
-      disablePrev={disablePrev}
-      disableNext={disableNext}
-      onClickPrev={handleClickPrev}
-      onClickNext={handleClickNext}
-    />
+    <Switch>
+      <Route exact path={match.path} component={List} />
+      <Route exact path={`${match.path}/:id`} component={Detail} />
+    </Switch>
   );
 };
 

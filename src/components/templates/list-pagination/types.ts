@@ -7,4 +7,5 @@ export interface ListPaginationProps {
   disableNext: boolean;
   onClickPrev: () => void;
   onClickNext: () => void;
+  onClickCard: (data: any) => void;
 }

@@ -13,9 +13,9 @@ export const charactersStatus = (
   payload: { status },
 });
 
-export const charactersFetch = (page?: number): CharactersActionTypes => ({
+export const charactersFetch = (id: string): CharactersActionTypes => ({
   type: CharactersCreators.CHAR_FETCH,
-  payload: { page: page ? page : 1 },
+  payload: { id },
 });
 
 export const charactersData = (payload: {
@@ -23,5 +23,12 @@ export const charactersData = (payload: {
   data: CharacterType[];
 }): CharactersActionTypes => ({
   type: CharactersCreators.CHAR_DATA,
+  payload,
+});
+
+export const charactersDataDetail = (payload: {
+  data: CharacterType;
+}): CharactersActionTypes => ({
+  type: CharactersCreators.CHAR_DATA_DETAIL,
   payload,
 });

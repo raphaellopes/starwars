@@ -23,17 +23,20 @@ export const useCharacterHook = () => {
       .filter((item) => item.id);
   };
 
+  const byId = (id: string) => data[id];
+
   // dispatchers
   const setStatus = (value: CharactersStatusType) =>
     dispatch(actions.charactersStatus(value));
 
-  const request = (page?: number) => dispatch(actions.charactersFetch(page));
+  const request = (id: string) => dispatch(actions.charactersFetch(id));
 
   return {
     status,
     loading,
     data,
     dataByPage,
+    byId,
     dispatchers: { setStatus, request },
   };
 };

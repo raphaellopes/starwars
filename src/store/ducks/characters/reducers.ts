@@ -31,7 +31,8 @@ export const charactersReducer = (
             };
       return result;
     }
-    case CharactersCreators.CHAR_DATA: {
+    case CharactersCreators.CHAR_DATA:
+    case CharactersCreators.CHAR_DATA_DETAIL: {
       const { data } = action.payload;
       const result: CharactersDataType = Object.entries(data).reduce(
         (merged, [id, item]) => ({

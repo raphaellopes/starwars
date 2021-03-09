@@ -16,7 +16,7 @@ export const Header: FC<HTMLAttributes<HTMLDivElement>> = (props) => {
   const menuItems = [
     {
       label: 'Characters',
-      onClick: () => history.push('/'),
+      onClick: () => history.push('/characters'),
     },
     {
       label: 'Species',

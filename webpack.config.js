@@ -62,6 +62,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(srcPath, 'public', 'index.html'),
+      base: '/',
     }),
     new MiniCssExtractPlugin(),
   ],

@@ -12,8 +12,8 @@ export const Main: FC = () => (
     <Router>
       <Header />
       <Switch>
-        <Route exact path="/" component={Characters} />
-        <Route exact path="/species" component={Species} />
+        <Route path="/characters" component={Characters} />
+        <Route path="/species" component={Species} />
       </Switch>
     </Router>
   </>

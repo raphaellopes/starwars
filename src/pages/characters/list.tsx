@@ -1,25 +1,27 @@
 // Vendors
 import React, { FC, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 // Locals
-import { useSpecieHook } from '~store/ducks/species';
+import { useCharacterHook } from '~store/ducks/characters';
 import { usePaginationHook } from '~store/ducks/pagination';
 import { PaginationReducersType } from '~store/ducks/pagination/types';
 import { ListPagination } from '~components';
 
-const Species: FC = () => {
-  const { loading, dataByPage } = useSpecieHook();
+const CharactersList: FC = () => {
+  const { loading, dataByPage } = useCharacterHook();
   const {
     currentPage: page,
     totalPages,
     dispatchers: paginationDispatchers,
-  } = usePaginationHook(PaginationReducersType.Species);
-  const species = dataByPage(page);
+  } = usePaginationHook(PaginationReducersType.Characters);
+  const characters = dataByPage(page);
   const disablePrev = page < 2;
   const disableNext = page === totalPages;
+  const history = useHistory();
 
   useEffect(() => {
-    !species.length && paginationDispatchers.request(page || 1);
+    !characters.length && paginationDispatchers.request(page || 1);
   }, [page]);
 
   const handleClickNext = () => {
@@ -32,19 +34,21 @@ const Species: FC = () => {
     paginationDispatchers.setCurrentPage(next);
   };
 
+  const handleClickCard = (id: string) => history.push(`/characters/${id}`);
+
   return (
     <ListPagination
-      title="Species"
+      title="Characters"
       loading={loading}
-      cardKeyPrefix="species"
-      data={species}
+      cardKeyPrefix="characters"
+      data={characters}
       disablePrev={disablePrev}
       disableNext={disableNext}
       onClickPrev={handleClickPrev}
       onClickNext={handleClickNext}
-      onClickCard={(id) => console.log('specie card', { id })}
+      onClickCard={handleClickCard}
     />
   );
 };
 
-export default Species;
+export default CharactersList;

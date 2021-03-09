@@ -15,14 +15,15 @@ export const ListPagination: FC<ListPaginationProps> = ({
   disableNext,
   onClickPrev,
   onClickNext,
+  onClickCard,
 }) => {
-  const handleClickCard = () => console.log('handleClickCard');
+  const handleClickCard = (id: string) => () => onClickCard(id);
 
   // renders
-  const renderCard = ({ name }: any, index: number) => (
+  const renderCard = ({ name, id }: any, index: number) => (
     <CardForward
       key={`${cardKeyPrefix}-item-${index}`}
-      onClick={handleClickCard}
+      onClick={handleClickCard(id)}
       text={name}
     />
   );
