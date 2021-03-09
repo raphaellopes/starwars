@@ -25,7 +25,6 @@ export function* charactersListData({ payload, meta }: PaginationDataAction) {
   if (!isSameReducer(meta.reducerKey)) return;
 
   const { data, page } = payload;
-  console.log('>>> sagas', { data }, normalize(data, [CharactersSchema]));
   yield put(actions.charactersStatus('fetched'));
   yield put(
     actions.charactersData({
