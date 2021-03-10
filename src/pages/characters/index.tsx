@@ -8,7 +8,6 @@ import Detail from './detail';
 
 const Characters: FC = () => {
   const match = useRouteMatch();
-  console.log('>>> Characters', { match });
   return (
     <Switch>
       <Route exact path={match.path} component={List} />

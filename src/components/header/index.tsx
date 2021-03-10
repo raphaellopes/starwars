@@ -21,7 +21,7 @@ export const Header: FC<HTMLAttributes<HTMLDivElement>> = (props) => {
   // renders
   const renderBar = () => (
     <Toolbar
-      componentLeft={<Logo src={LogoSvg} />}
+      componentLeft={<Logo src={LogoSvg} onClick={() => history.push('/')} />}
       componentRight={
         <HeaderIcon
           name={showMenu ? 'close' : 'menu'}
