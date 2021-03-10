@@ -3,30 +3,20 @@ import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
 
 // Locals
+import { routes, RouteType } from '~shared';
 import { Container, CardForward } from '~components';
 
 export const Home: FC = () => {
   const history = useHistory();
-  console.log({ history });
-  const pages = [
-    {
-      label: 'Characters',
-      route: 'characters',
-    },
-    {
-      label: 'Species',
-      route: 'species',
-    },
-  ];
 
   // renders
-  const renderPage = (page: any, index: number) => (
+  const renderPage = (page: RouteType, index: number) => (
     <CardForward
       key={`card-item-${index}`}
       text={page.label}
-      onClick={() => history.push(page.route)}
+      onClick={() => history.push(page.path)}
     />
   );
 
-  return <Container>{pages.map(renderPage)}</Container>;
+  return <Container>{routes.map(renderPage)}</Container>;
 };

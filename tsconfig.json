@@ -18,7 +18,9 @@
       "~styles": ["styles"],
       "~services/*": ["services/*"],
       "~store/*": ["store/*"],
-      "~assets/*": ["assets/*"]
+      "~assets/*": ["assets/*"],
+      "~shared": ["shared"],
+      "~shared/*": ["shared/*"]
     }
   },
   "include": ["src/index.tsx", "src/custom.d.ts"]
