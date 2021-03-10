@@ -1,11 +1,10 @@
 // Vendors
 import { HTMLAttributes } from 'react';
 
-export interface ItemProps {
-  label: string;
-  onClick: () => void;
-}
+// Locals
+import { RouteType } from '~shared';
 
 export interface MenuProps extends HTMLAttributes<HTMLDivElement> {
-  items: ItemProps[];
+  items: RouteType[];
+  onClickItem: (item: RouteType) => void;
 }
